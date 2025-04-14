@@ -1,16 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Monster Battle</title>
 
     <!--  Estilos  -->
-      <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-    <h1>Piedra, papel y tijeras (Por ahora)</h1>
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <h1>¡Monster Battle!</h1>
+
+    <section id="seleccionar-monstruo">
+      <h2>Elige tu monstruo:</h2>
+
+      <label for="hydrovortex">Hydrovortex</label>
+      <input type="radio" name="monstruo" id="hydrovortex" />
+      <label for="terramorph">terramorph</label>
+      <input type="radio" name="monstruo" id="terramorph" />
+      <label for="pyroclastia">pyroclastia</label>
+      <input type="radio" name="monstruo" id="pyroclastia" />
+      <label for="flowqua">flowqua</label>
+      <input type="radio" name="monstruo" id="flowqua" />
+      <label for="magmatron">magmatron</label>
+      <input type="radio" name="monstruo" id="magmatron" />
+      <label for="vapullar">vapullar</label>
+      <input type="radio" name="monstruo" id="vapullar" />
+
+      <button id="boton-elegir">Elegir</button>
+    </section>
+
+    <section id="seleccionar-ataque">
+      <h2>Elige tu ataque:</h2>
+
+      <p>
+        Tu <span id="monstruo-jugador">monstruo</span> tiene
+        <span>3</span> vidas
+      </p>
+      <p>
+        El <span id="monstruo-enemigo">monstruo</span> de enemigo tiene
+        <span>3</span> vidas
+      </p>
+
+      <p>
+        <button id="boton-fuego">Fuego 🔥</button>
+        <button id="boton-agua">Agua 💦</button>
+        <button id="boton-tierra">Tierra 🪨</button>
+      </p>
+    </section>
+
+    <section id="mensajes"></section>
+
+    <section id="reiniciar">
+      <button id="boton-reiniciar">Reiniciar</button>
+    </section>
+
     <!--  Scripts  -->
-      <script src="main.js"></script>
-</body>
+    <script src="main.js"></script>
+  </body>
 </html>
