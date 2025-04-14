@@ -92,7 +92,7 @@ function ataqueAleatorioEnemigo() {
   combate();
 }
 
-function crearMensaje() {
+function crearMensaje(resultado) {
   let sectionMensajes = document.getElementById("mensajes");
   let parrafo = document.createElement("p");
   parrafo.innerHTML =
@@ -100,17 +100,22 @@ function crearMensaje() {
     ataqueJugador +
     " y el monstruo enemigo atacó con " +
     ataqueEnemigo +
-    ", Que pasara?";
+    ", " + resultado;
 
   sectionMensajes.appendChild(parrafo);
 }
 
 function combate() {
   if (ataqueEnemigo == ataqueJugador) {
+    crearMensaje("HAN EMPATADO!! 🤝")
   } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
+    crearMensaje("GANASTE!! 🏆")
   } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
+    crearMensaje("GANASTE!! 🏆")
   } else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
-  } else {
+    crearMensaje("GANASTE!! 🏆")
+  } else { 
+    crearMensaje("QUE MAL, PERDISTE!! 💔")
   }
 }
 
