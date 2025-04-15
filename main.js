@@ -1,22 +1,44 @@
 // VARIABLES
+
 let ataqueJugador;
 let ataqueEnemigo;
+let vidasJugador = 3;
+let vidasEnemigo = 3;
 
-// // FUNCIONES
+//// SECCIONES
+let seccionSeleccionarMonstruo = document.getElementById(
+  "seleccionar-monstruo"
+);
+let seccionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+let seccionReiniciar = document.getElementById("reiniciar");
+
+//// BOTONES
+let botonMonstruoJugador = document.getElementById("boton-elegir");
+let botonFuego = document.getElementById("boton-fuego");
+let botonAgua = document.getElementById("boton-agua");
+let botonTierra = document.getElementById("boton-tierra");
+let botonReiniciar = document.getElementById("boton-reiniciar");
+
+//// FUNCIONES
 
 function iniciarJuego() {
-  let botonMonstruoJugador = document.getElementById("boton-elegir");
+  seccionSeleccionarAtaque.style.display = "none";
+
+  seccionReiniciar.style.display = "none";
+
   botonMonstruoJugador.addEventListener("click", seleccionarMonstruoJugador);
 
-  let botonFuego = document.getElementById("boton-fuego");
   botonFuego.addEventListener("click", ataqueFuego);
-  let botonAgua = document.getElementById("boton-agua");
   botonAgua.addEventListener("click", ataqueAgua);
-  let botonTierra = document.getElementById("boton-tierra");
   botonTierra.addEventListener("click", ataqueTierra);
+
+  botonReiniciar.addEventListener("click", reiniciarJuego);
 }
 
 function seleccionarMonstruoJugador() {
+  seccionSeleccionarMonstruo.style.display = "none";
+  seccionSeleccionarAtaque.style.display = "block";
+
   let inputHydrovortex = document.getElementById("hydrovortex");
   let inputTerramorph = document.getElementById("terramorph");
   let inputPyroclastia = document.getElementById("pyroclastia");
@@ -100,23 +122,63 @@ function crearMensaje(resultado) {
     ataqueJugador +
     " y el monstruo enemigo atacó con " +
     ataqueEnemigo +
-    ", " + resultado;
+    ", " +
+    resultado;
 
   sectionMensajes.appendChild(parrafo);
 }
 
+function crearMensajeFinal(resultadoFinal) {
+  let sectionMensajes = document.getElementById("mensajes");
+  let parrafo = document.createElement("p");
+  parrafo.innerHTML = resultadoFinal;
+
+  sectionMensajes.appendChild(parrafo);
+
+  botonAgua.disabled = true;
+  botonFuego.disabled = true;
+  botonTierra.disabled = true;
+
+  seccionReiniciar.style.display = "block";
+}
+
 function combate() {
+  let spanVidasJugador = document.getElementById("vidas-jugador");
+  let spanVidasEnemigo = document.getElementById("vidas-enemigo");
+
   if (ataqueEnemigo == ataqueJugador) {
-    crearMensaje("HAN EMPATADO!! 🤝")
+    crearMensaje("ES UN EMPATE 🤝");
   } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
-    crearMensaje("GANASTE!! 🏆")
+    crearMensaje("HAS GANADO, GENIAL! 🏆");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
   } else if (ataqueJugador == "TIERRA" && ataqueEnemigo == "AGUA") {
-    crearMensaje("GANASTE!! 🏆")
+    crearMensaje("HAS GANADO, GENIAL! 🏆");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
   } else if (ataqueJugador == "AGUA" && ataqueEnemigo == "FUEGO") {
-    crearMensaje("GANASTE!! 🏆")
-  } else { 
-    crearMensaje("QUE MAL, PERDISTE!! 💔")
+    crearMensaje("HAS GANADO, GENIAL! 🏆");
+    vidasEnemigo--;
+    spanVidasEnemigo.innerHTML = vidasEnemigo;
+  } else {
+    crearMensaje("PERDISTE, MALA SUERTE! 💔");
+    vidasJugador--;
+    spanVidasJugador.innerHTML = vidasJugador;
   }
+
+  revisarVidas();
+}
+
+function revisarVidas() {
+  if (vidasEnemigo == 0) {
+    crearMensajeFinal("🎉🎉 Ganaste, Felicidades! 🎉🎉");
+  } else if (vidasJugador == 0) {
+    crearMensajeFinal("Perdiste, pero puedes seguir intentando 💪");
+  }
+}
+
+function reiniciarJuego() {
+  location.reload();
 }
 
 function aleatorio(min, max) {

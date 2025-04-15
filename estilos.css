@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .titulo {
+    color: lightyellow;
+    background-color: olivedrab;
+    width: 350px;
+    height: 50px;
+  }
+  
+  #seleccionar-monstruo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
