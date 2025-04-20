@@ -37,7 +37,7 @@ function iniciarJuego() {
 
 function seleccionarMonstruoJugador() {
   seccionSeleccionarMonstruo.style.display = "none";
-  seccionSeleccionarAtaque.style.display = "block";
+  seccionSeleccionarAtaque.style.display = "flex";
 
   let inputHydrovortex = document.getElementById("hydrovortex");
   let inputTerramorph = document.getElementById("terramorph");
@@ -115,25 +115,25 @@ function ataqueAleatorioEnemigo() {
 }
 
 function crearMensaje(resultado) {
-  let sectionMensajes = document.getElementById("mensajes");
-  let parrafo = document.createElement("p");
-  parrafo.innerHTML =
-    "Tu monstruo atacó con " +
-    ataqueJugador +
-    " y el monstruo enemigo atacó con " +
-    ataqueEnemigo +
-    ", " +
-    resultado;
+  let sectionMensajes = document.getElementById("resultado");
+  let ataquesDelJugador = document.getElementById("ataques-del-jugador");
+  let ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
 
-  sectionMensajes.appendChild(parrafo);
+  let nuevoAtaqueDelJugador = document.createElement("p");
+  let nuevoAtaqueDelEnemigo = document.createElement("p");
+
+  sectionMensajes.innerHTML = resultado
+  nuevoAtaqueDelJugador.innerHTML = ataqueJugador
+  nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+
+  ataquesDelJugador.appendChild(nuevoAtaqueDelJugador);
+  ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo);
 }
 
 function crearMensajeFinal(resultadoFinal) {
-  let sectionMensajes = document.getElementById("mensajes");
-  let parrafo = document.createElement("p");
-  parrafo.innerHTML = resultadoFinal;
-
-  sectionMensajes.appendChild(parrafo);
+  let sectionMensajes = document.getElementById("resultado");
+  
+  sectionMensajes.innerHTML = resultadoFinal;
 
   botonAgua.disabled = true;
   botonFuego.disabled = true;

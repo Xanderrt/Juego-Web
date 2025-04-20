@@ -55,31 +55,49 @@
     </section>
 
     <section id="seleccionar-ataque">
-      <h1 class="titulo">¡Monster Battle!</h1>
+      <div class="titulo">
+        <h1>¡Monster Battle!</h1>
+      </div>
 
-      <h2>Elige tu ataque:</h2>
+      <div class="subtitulo">        
+        <h2>Elige tu ataque:</h2>
+      </div>
 
-      <p>
-        Tu <span id="monstruo-jugador">monstruo</span> tiene
-        <span id="vidas-jugador">3</span> vidas
-      </p>
-      <p>
-        El <span id="monstruo-enemigo">monstruo</span> de enemigo tiene
-        <span id="vidas-enemigo">3</span> vidas
-      </p>
-
-      <p>
+      <div class="botones">
         <button id="boton-fuego">Fuego 🔥</button>
         <button id="boton-agua">Agua 💦</button>
         <button id="boton-tierra">Tierra 🪨</button>
-      </p>
+      </div>
+
+      
+      <div id="mensajes">
+        <p id="resultado"> ¡¡Comienza la Batalla!! </p>
+
+        <section id="reiniciar">
+          <button id="boton-reiniciar">Reiniciar</button>
+        </section>
+      </div>        
+      
+
+      <div class="ataques">
+        <div>
+          <p id="vidas-jugador">3</p>
+          <p id="monstruo-jugador"></p>
+          <div id="ataques-del-jugador"></div>
+        </div>
+
+        <div>
+          <p id="vidas-enemigo">3</p>
+          <p id="monstruo-enemigo"></p>
+          <div id="ataques-del-enemigo"></div>
+        </div>
+      </div>
+
+     
+
     </section>
 
-    <section id="mensajes"></section>
-
-    <section id="reiniciar">
-      <button id="boton-reiniciar">Reiniciar</button>
-    </section>
+   
 
     <!--  Scripts  -->
     <script src="main.js"></script>

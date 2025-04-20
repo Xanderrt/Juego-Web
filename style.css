@@ -20,9 +20,11 @@ body{
 }
   
 #seleccionar-monstruo {
+  width: 800px;
+  height: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 20px;
 }
@@ -93,11 +95,12 @@ input{
 
 button{
   width: 200px;
-  height: 30px;
+  height: 40px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 
   background-color: brown;
   color: rgba(242, 195, 92, 1);
@@ -112,4 +115,45 @@ button{
 
 button:hover{
   background-color: red;
+}
+
+#seleccionar-ataque{
+  width: 800px;
+  height: 90%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.botones{
+  display: flex;
+  margin: 20px;
+  gap: 10px;
+}
+
+#mensajes{
+  width: 600px;
+  height: fit-content;
+  padding: 2%;
+  gap: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  border-top: 2px solid brown;
+  border-bottom: 2px solid brown;
+}
+
+#boton-reiniciar{
+  background-color: transparent;
+  border: 2px solid maroon;
+  color: maroon;
+}
+
+.ataques{
+  display: grid;
+  grid-template-columns: 140px 140px;
+  text-align: center;
+  gap: 20px;
 }
