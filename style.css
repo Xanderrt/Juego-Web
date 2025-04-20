@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "Silkscreen", sans-serif;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #F2C35C;
+  background: radial-gradient(circle, rgba(242, 195, 92, 1) 5%, rgba(179, 143, 66, 1) 74%, rgba(100, 75, 22, 1) 92%, rgba(84, 61, 13, 1) 100%);
+}
+  
+#seleccionar-monstruo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.titulo {
+  width: 600px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titulo h1 {
+  color: rgb(32, 12, 2);
+  -webkit-text-stroke: 2px brown;
+  text-shadow:
+    3px 3px 0.5px rgba(0, 0, 0, 0.3),
+    1px -3px 0.5px rgba(0, 0, 0, 0.3),
+    -1px -1px 0.5px rgba(0, 0, 0, 0.3),
+    -1px 1px 0.5px rgba(0, 0, 0, 0.3)
+  ;
+  border-bottom: 2px solid brown;
+  font-size: 70px;
+  line-height: 70px;
+  text-align: center;
+
+  margin-top: 30px;
+  padding-bottom: 10px;
+}
+
+.tarjetas{
+  width: 600px;
+  min-width: 300px;
+  height: 400px;
+  gap: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  text-align: center;
+}
+
+.tarjeta-de-monstruo{
+  width: 150px;
+  height: 150px;
+  background-color: rgb(206, 162, 68);
+  padding: 10px;
+  border: 2px solid brown;
+  border-radius: 10px;
+  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.3);
+
+}
+
+.tarjeta-de-monstruo p{
+  font-size: 14px;
+  text-align: center;
+}
+.tarjeta-de-monstruo img{
+  width: 100px;
+  height: auto;
+}
+
+input{
+  display: none;
+}
+
+button{
+  width: 200px;
+  height: 30px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: brown;
+  color: rgba(242, 195, 92, 1);
+  border: 2px solid rgba(242, 195, 92, 1);
+  border-radius: 50px;
+  font-size: 20px;
+
+  box-shadow: 1px 5px 0 rgba(0, 0, 0, 0.3);
+
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: red;
+}
