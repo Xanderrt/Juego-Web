@@ -17,6 +17,7 @@ body{
   flex-direction: column;
   background: #F2C35C;
   background: radial-gradient(circle, rgba(242, 195, 92, 1) 5%, rgba(179, 143, 66, 1) 74%, rgba(100, 75, 22, 1) 92%, rgba(84, 61, 13, 1) 100%);
+  overflow: hidden;
 }
   
 #seleccionar-monstruo {
@@ -84,6 +85,7 @@ body{
   font-size: 14px;
   text-align: center;
 }
+
 .tarjeta-de-monstruo img{
   width: 100px;
   height: auto;
@@ -104,7 +106,7 @@ button{
 
   background-color: brown;
   color: rgba(242, 195, 92, 1);
-  border: 2px solid rgba(242, 195, 92, 1);
+  border: 2px solid maroon;
   border-radius: 50px;
   font-size: 20px;
 
@@ -145,6 +147,10 @@ button:hover{
   border-bottom: 2px solid brown;
 }
 
+#resultado{
+  text-align: center;
+}
+
 #boton-reiniciar{
   background-color: transparent;
   border: 2px solid maroon;
@@ -156,4 +162,48 @@ button:hover{
   grid-template-columns: 140px 140px;
   text-align: center;
   gap: 20px;
+}
+
+
+@media (max-width:360px) {
+
+  .titulo{
+    width: 200px;
+  }
+
+  .titulo h1{
+    font-size: 40px;
+    line-height: 50px;
+    }
+
+  h2{
+    font-size: 16px;
+  }
+
+  .tarjetas{
+    width: 300px;
+  }
+
+  .tarjeta-de-monstruo {
+    width: 110px;
+    height: 110px;
+  }
+
+  .tarjeta-de-monstruo p{
+    font-size: 10px;
+  }
+
+  .tarjeta-de-monstruo img{
+    width: 70px;
+  }
+
+  .botones{
+    flex-direction: column;
+  }
+
+  #mensajes{
+    width: 250px;
+    height: auto;
+  }
+
 }
