@@ -95,6 +95,10 @@ input{
   display: none;
 }
 
+input:checked + label{
+ background-color: rgb(122, 75, 4);
+}
+
 button{
   width: 200px;
   height: 40px;
