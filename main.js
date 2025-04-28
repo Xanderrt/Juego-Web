@@ -19,6 +19,25 @@ let botonAgua = document.getElementById("boton-agua");
 let botonTierra = document.getElementById("boton-tierra");
 let botonReiniciar = document.getElementById("boton-reiniciar");
 
+//MONSTRUOS
+let inputHydrovortex = document.getElementById("hydrovortex");
+let inputTerramorph = document.getElementById("terramorph");
+let inputPyroclastia = document.getElementById("pyroclastia");
+let inputFlowqua = document.getElementById("flowqua");
+let inputMagmatron = document.getElementById("magmatron");
+let inputVapullar = document.getElementById("vapullar");
+let spanMonstruoJugador = document.getElementById("monstruo-jugador");
+
+let spanMonstruoEnemigo = document.getElementById("monstruo-enemigo");
+
+let sectionMensajes = document.getElementById("resultado");
+let ataquesDelJugador = document.getElementById("ataques-del-jugador");
+let ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
+
+let spanVidasJugador = document.getElementById("vidas-jugador");
+let spanVidasEnemigo = document.getElementById("vidas-enemigo");
+
+
 //// FUNCIONES
 
 function iniciarJuego() {
@@ -38,14 +57,6 @@ function iniciarJuego() {
 function seleccionarMonstruoJugador() {
   seccionSeleccionarMonstruo.style.display = "none";
   seccionSeleccionarAtaque.style.display = "flex";
-
-  let inputHydrovortex = document.getElementById("hydrovortex");
-  let inputTerramorph = document.getElementById("terramorph");
-  let inputPyroclastia = document.getElementById("pyroclastia");
-  let inputFlowqua = document.getElementById("flowqua");
-  let inputMagmatron = document.getElementById("magmatron");
-  let inputVapullar = document.getElementById("vapullar");
-  let spanMonstruoJugador = document.getElementById("monstruo-jugador");
 
   if (inputHydrovortex.checked) {
     spanMonstruoJugador.innerHTML = "Hydrovortex";
@@ -68,8 +79,7 @@ function seleccionarMonstruoJugador() {
 
 function seleccionarMonstruoEnemigo() {
   let monstruoAleatorio = aleatorio(1, 6);
-  let spanMonstruoEnemigo = document.getElementById("monstruo-enemigo");
-
+  
   if (monstruoAleatorio == 1) {
     spanMonstruoEnemigo.innerHTML = "Hydrovortex";
   } else if (monstruoAleatorio == 2) {
@@ -115,10 +125,6 @@ function ataqueAleatorioEnemigo() {
 }
 
 function crearMensaje(resultado) {
-  let sectionMensajes = document.getElementById("resultado");
-  let ataquesDelJugador = document.getElementById("ataques-del-jugador");
-  let ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
-
   let nuevoAtaqueDelJugador = document.createElement("p");
   let nuevoAtaqueDelEnemigo = document.createElement("p");
 
@@ -131,8 +137,6 @@ function crearMensaje(resultado) {
 }
 
 function crearMensajeFinal(resultadoFinal) {
-  let sectionMensajes = document.getElementById("resultado");
-  
   sectionMensajes.innerHTML = resultadoFinal;
 
   botonAgua.disabled = true;
@@ -143,9 +147,6 @@ function crearMensajeFinal(resultadoFinal) {
 }
 
 function combate() {
-  let spanVidasJugador = document.getElementById("vidas-jugador");
-  let spanVidasEnemigo = document.getElementById("vidas-enemigo");
-
   if (ataqueEnemigo == ataqueJugador) {
     crearMensaje("ES UN EMPATE 🤝");
   } else if (ataqueJugador == "FUEGO" && ataqueEnemigo == "TIERRA") {
