@@ -1,47 +1,129 @@
 // VARIABLES
 
-let ataqueJugador;
-let ataqueEnemigo;
-let vidasJugador = 3;
-let vidasEnemigo = 3;
-
 //// SECCIONES
 let seccionSeleccionarMonstruo = document.getElementById(
   "seleccionar-monstruo"
 );
-let seccionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
-let seccionReiniciar = document.getElementById("reiniciar");
+const seccionSeleccionarAtaque = document.getElementById("seleccionar-ataque");
+const seccionReiniciar = document.getElementById("reiniciar");
 
 //// BOTONES
-let botonMonstruoJugador = document.getElementById("boton-elegir");
-let botonFuego = document.getElementById("boton-fuego");
-let botonAgua = document.getElementById("boton-agua");
-let botonTierra = document.getElementById("boton-tierra");
-let botonReiniciar = document.getElementById("boton-reiniciar");
+const botonMonstruoJugador = document.getElementById("boton-elegir");
+const botonFuego = document.getElementById("boton-fuego");
+const botonAgua = document.getElementById("boton-agua");
+const botonTierra = document.getElementById("boton-tierra");
+const botonReiniciar = document.getElementById("boton-reiniciar");
 
 //MONSTRUOS
-let inputHydrovortex = document.getElementById("hydrovortex");
-let inputTerramorph = document.getElementById("terramorph");
-let inputPyroclastia = document.getElementById("pyroclastia");
-let inputFlowqua = document.getElementById("flowqua");
-let inputMagmatron = document.getElementById("magmatron");
-let inputVapullar = document.getElementById("vapullar");
-let spanMonstruoJugador = document.getElementById("monstruo-jugador");
+const inputHydrovortex = document.getElementById("hydrovortex");
+const inputTerramorph = document.getElementById("terramorph");
+const inputPyroclastia = document.getElementById("pyroclastia");
+const inputFlowqua = document.getElementById("flowqua");
+const inputMagmatron = document.getElementById("magmatron");
+const inputVapullar = document.getElementById("vapullar");
+const spanMonstruoJugador = document.getElementById("monstruo-jugador");
 
-let spanMonstruoEnemigo = document.getElementById("monstruo-enemigo");
+const spanMonstruoEnemigo = document.getElementById("monstruo-enemigo");
 
-let sectionMensajes = document.getElementById("resultado");
-let ataquesDelJugador = document.getElementById("ataques-del-jugador");
-let ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
+const sectionMensajes = document.getElementById("resultado");
+const ataquesDelJugador = document.getElementById("ataques-del-jugador");
+const ataquesDelEnemigo = document.getElementById("ataques-del-enemigo");
 
-let spanVidasJugador = document.getElementById("vidas-jugador");
-let spanVidasEnemigo = document.getElementById("vidas-enemigo");
+const spanVidasJugador = document.getElementById("vidas-jugador");
+const spanVidasEnemigo = document.getElementById("vidas-enemigo");
+const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
+
+let monstruos = [];
+let ataqueJugador;
+let ataqueEnemigo;
+let opcionDeMonstruo;
+let vidasJugador = 3;
+let vidasEnemigo = 3;
+
+//CLASES
+class Monstruo {
+  constructor(nombre, img, vida){
+    this.nombre = nombre
+    this.img = img
+    this.vida = vida
+    this.ataques = []
+  }
+}
+
+let hydrovortex = new Monstruo('Hydrovortex', '/img/hydrovortex.png', 5)
+let terramorph = new Monstruo('Terramorph', '/img/terramorph.png', 5)
+let pyroclastia = new Monstruo('Pyroclastia', '/img/pyroclastia.png', 5)
+let flowqua = new Monstruo('Flowqua', '/img/flowqua.png', 5)
+let magmatron = new Monstruo('Magmatron', '/img/magmatron.png', 5)
+let vapullar = new Monstruo('Vapullar', '/img/vapullar.png', 5)
+
+hydrovortex.ataques.push(
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🌿', id: 'boton-tierra'},
+  {nombre: '🔥', id: 'boton-fuego'},
+)
+
+terramorph.ataques.push(
+  {nombre: '🌿', id: 'boton-tierra'},
+  {nombre: '🌿', id: 'boton-tierra'},
+  {nombre: '🌿', id: 'boton-tierra'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🔥', id: 'boton-fuego'},
+)
+
+pyroclastia.ataques.push(
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🌿', id: 'boton-tierra'},
+)
+
+flowqua.ataques.push(
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🌿', id: 'boton-tierra'},
+  {nombre: '🌿', id: 'boton-tierra'}, 
+)
+
+magmatron.ataques.push(  
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🌿', id: 'boton-tierra'},
+  {nombre: '🌿', id: 'boton-tierra'},
+)
+
+vapullar.ataques.push(
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '💧', id: 'boton-agua'},
+  {nombre: '🔥', id: 'boton-fuego'},
+  {nombre: '🔥', id: 'boton-fuego'},
+)
+
+monstruos.push(hydrovortex, terramorph, pyroclastia, flowqua, magmatron, vapullar)
 
 
 //// FUNCIONES
 
 function iniciarJuego() {
   seccionSeleccionarAtaque.style.display = "none";
+
+  monstruos.forEach((monstruo) => {
+    opcionDeMonstruo = `
+    <input type="radio" name="monstruo" id=${monstruo.nombre} />
+    <label for=${monstruo.nombre} class="tarjeta-de-monstruo">
+      <p>${monstruo.nombre}</p>
+      <img src=${monstruo.img} alt=${monstruo.nombre} />
+    </label>
+    `;
+
+    contenedorTarjetas.innerHTML += opcionDeMonstruo
+  })
 
   seccionReiniciar.style.display = "none";
 
