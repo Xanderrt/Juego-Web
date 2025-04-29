@@ -15,14 +15,7 @@ const botonTierra = document.getElementById("boton-tierra");
 const botonReiniciar = document.getElementById("boton-reiniciar");
 
 //MONSTRUOS
-const inputHydrovortex = document.getElementById("hydrovortex");
-const inputTerramorph = document.getElementById("terramorph");
-const inputPyroclastia = document.getElementById("pyroclastia");
-const inputFlowqua = document.getElementById("flowqua");
-const inputMagmatron = document.getElementById("magmatron");
-const inputVapullar = document.getElementById("vapullar");
 const spanMonstruoJugador = document.getElementById("monstruo-jugador");
-
 const spanMonstruoEnemigo = document.getElementById("monstruo-enemigo");
 
 const sectionMensajes = document.getElementById("resultado");
@@ -37,6 +30,16 @@ let monstruos = [];
 let ataqueJugador;
 let ataqueEnemigo;
 let opcionDeMonstruo;
+
+let inputHydrovortex;
+let inputTerramorph;
+let inputPyroclastia;
+let inputFlowqua;
+let inputMagmatron;
+let inputVapullar;
+
+let monstruoJugador;
+
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 
@@ -123,6 +126,13 @@ function iniciarJuego() {
     `;
 
     contenedorTarjetas.innerHTML += opcionDeMonstruo
+
+    inputHydrovortex = document.getElementById("Hydrovortex");
+    inputTerramorph = document.getElementById("Terramorph");
+    inputPyroclastia = document.getElementById("Pyroclastia");
+    inputFlowqua = document.getElementById("Flowqua");
+    inputMagmatron = document.getElementById("Magmatron");
+    inputVapullar = document.getElementById("Vapullar");
   })
 
   seccionReiniciar.style.display = "none";
@@ -141,40 +151,51 @@ function seleccionarMonstruoJugador() {
   seccionSeleccionarAtaque.style.display = "flex";
 
   if (inputHydrovortex.checked) {
-    spanMonstruoJugador.innerHTML = "Hydrovortex";
+    spanMonstruoJugador.innerHTML = inputHydrovortex.id;
+    monstruoJugador = inputHydrovortex.id
   } else if (inputTerramorph.checked) {
-    spanMonstruoJugador.innerHTML = "Terramorph";
+    spanMonstruoJugador.innerHTML = inputTerramorph.id;
+    monstruoJugador = inputTerramorph.id
   } else if (inputPyroclastia.checked) {
-    spanMonstruoJugador.innerHTML = "Pyroclastia";
+    spanMonstruoJugador.innerHTML = inputPyroclastia.id;
+    monstruoJugador = inputPyroclastia.id
   } else if (inputFlowqua.checked) {
-    spanMonstruoJugador.innerHTML = "Flowqua";
+    spanMonstruoJugador.innerHTML = inputFlowqua.id;
+    monstruoJugador = inputFlowqua.id
   } else if (inputMagmatron.checked) {
-    spanMonstruoJugador.innerHTML = "Magmatron";
+    spanMonstruoJugador.innerHTML = inputMagmatron.id;
+    monstruoJugador = inputMagmatron.id
   } else if (inputVapullar.checked) {
-    spanMonstruoJugador.innerHTML = "Vapullar";
+    spanMonstruoJugador.innerHTML = inputVapullar.id;
+    monstruoJugador = inputVapullar.id
   } else {
     alert("SELECCIONA UN MONSTRUO");
   }
 
+  extraerAtaques(monstruoJugador);
   seleccionarMonstruoEnemigo();
 }
 
-function seleccionarMonstruoEnemigo() {
-  let monstruoAleatorio = aleatorio(1, 6);
-  
-  if (monstruoAleatorio == 1) {
-    spanMonstruoEnemigo.innerHTML = "Hydrovortex";
-  } else if (monstruoAleatorio == 2) {
-    spanMonstruoEnemigo.innerHTML = "Terramorph";
-  } else if (monstruoAleatorio == 3) {
-    spanMonstruoEnemigo.innerHTML = "Pyroclastia";
-  } else if (monstruoAleatorio == 4) {
-    spanMonstruoEnemigo.innerHTML = "Flowqua";
-  } else if (monstruoAleatorio == 5) {
-    spanMonstruoEnemigo.innerHTML = "Magmatron";
-  } else {
-    spanMonstruoEnemigo.innerHTML = "Vapullar";
+function extraerAtaques (monstruoJugador) {
+  let ataques
+  for (let i = 0; i < monstruos.length; i++) {
+    if (monstruoJugador == monstruos[i].nombre) {
+      ataques = monstruos[i].ataques
+    }    
   }
+
+  console.log(ataques)
+  mostrarAtaques(ataques)
+}
+
+function mostrarAtaques (ataques) {
+  
+}
+
+function seleccionarMonstruoEnemigo() {
+  let monstruoAleatorio = aleatorio(0, monstruos.length - 1);
+  
+  spanMonstruoEnemigo.innerHTML = monstruos[monstruoAleatorio].nombre
 }
 
 function ataqueFuego() {
